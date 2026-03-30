@@ -3,166 +3,125 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Ragnarok: Sharing Hero — Câu Hỏi Thường Gặp (FAQ)</title>
+<title>Ragnarok: Sharing Hero — Câu Hỏi Thường Gặp</title>
 <style>
 * { box-sizing: border-box; margin: 0; padding: 0; }
-body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background: #0a0a1a; color: #e0e0f0; line-height: 1.7; }
-header { background: linear-gradient(135deg, #1a0a2e, #2d1b69); padding: 24px 20px; text-align: center; border-bottom: 2px solid #4a2f9a; }
-header h1 { font-size: 1.8em; color: #c8a8ff; letter-spacing: 1px; }
-header p { color: #9a8abf; margin-top: 6px; font-size: 0.95em; }
-nav { background: #12102a; padding: 12px 20px; display: flex; gap: 8px; flex-wrap: wrap; justify-content: center; border-bottom: 1px solid #2a2050; }
-nav a { color: #9a8abf; text-decoration: none; padding: 4px 10px; border-radius: 4px; font-size: 0.85em; transition: all 0.2s; }
-nav a:hover, nav a.active { background: #4a2f9a; color: #fff; }
-.container { max-width: 860px; margin: 0 auto; padding: 30px 20px; }
+body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif; background: #f5f5f0; color: #1a1a1a; line-height: 1.7; display: flex; flex-direction: column; min-height: 100vh; }
+.layout { display: flex; flex: 1; min-height: 100vh; }
+
+/* 사이드바 */
+.sidebar { width: 260px; min-width: 260px; background: #fff; border-right: 1px solid #e8e8e4; display: flex; flex-direction: column; position: fixed; top: 0; left: 0; height: 100vh; overflow-y: auto; z-index: 10; }
+.sidebar-logo { padding: 16px; border-bottom: 1px solid #e8e8e4; display: flex; align-items: center; gap: 10px; }
+.sidebar-logo .icon { width: 30px; height: 30px; background: #5c4dff; border-radius: 6px; display: flex; align-items: center; justify-content: center; color: white; font-weight: 600; font-size: 15px; flex-shrink: 0; }
+.sidebar-logo span { font-size: 14px; font-weight: 600; color: #1a1a1a; }
+.search-box { margin: 12px; padding: 7px 12px; background: #f5f5f0; border: 1px solid #e8e8e4; border-radius: 6px; font-size: 13px; color: #999; display: flex; align-items: center; gap: 8px; cursor: pointer; }
+.sidebar-section { padding: 8px 12px 4px; font-size: 11px; font-weight: 600; color: #999; letter-spacing: 0.06em; text-transform: uppercase; }
+.sidebar-item { padding: 6px 12px; margin: 1px 4px; border-radius: 6px; font-size: 13px; color: #555; cursor: pointer; display: flex; align-items: center; gap: 8px; text-decoration: none; }
+.sidebar-item:hover { background: #f0f0ec; color: #1a1a1a; }
+.sidebar-item.active { background: #5c4dff15; color: #5c4dff; font-weight: 500; }
+.sidebar-divider { margin: 8px 12px; border: none; border-top: 1px solid #e8e8e4; }
+
+/* 메인 */
+.main { margin-left: 260px; flex: 1; display: flex; flex-direction: column; }
+.topbar { background: #fff; border-bottom: 1px solid #e8e8e4; padding: 10px 32px; display: flex; align-items: center; justify-content: space-between; position: sticky; top: 0; z-index: 5; }
+.breadcrumb { font-size: 13px; color: #999; display: flex; align-items: center; gap: 6px; }
+.breadcrumb span { color: #1a1a1a; }
+.last-updated { font-size: 12px; color: #999; background: #f5f5f0; padding: 3px 10px; border-radius: 999px; border: 1px solid #e8e8e4; }
+
+.content { padding: 40px 48px; max-width: 800px; }
+.page-title { font-size: 28px; font-weight: 600; color: #1a1a1a; margin-bottom: 8px; }
+.page-desc { font-size: 15px; color: #666; margin-bottom: 36px; }
+
 .section { margin-bottom: 40px; }
-.section-title { font-size: 1.2em; color: #c8a8ff; border-left: 4px solid #7c4dff; padding-left: 12px; margin-bottom: 20px; }
-.faq-item { background: #12102a; border: 1px solid #2a2050; border-radius: 8px; margin-bottom: 12px; overflow: hidden; }
-.faq-q { padding: 14px 18px; cursor: pointer; font-weight: 600; color: #d0c0ff; display: flex; justify-content: space-between; align-items: center; }
-.faq-q:hover { background: #1e1a40; }
-.faq-q::after { content: '▼'; font-size: 0.75em; color: #7c4dff; transition: transform 0.2s; }
-.faq-item.open .faq-q::after { transform: rotate(180deg); }
-.faq-a { display: none; padding: 14px 18px; color: #b0a8d0; border-top: 1px solid #2a2050; }
-.faq-item.open .faq-a { display: block; }
-table { width: 100%; border-collapse: collapse; margin: 10px 0; }
-th { background: #2a2050; color: #c8a8ff; padding: 8px 12px; text-align: left; }
-td { padding: 8px 12px; border-bottom: 1px solid #1e1a40; }
-a { color: #9a78ff; }
-footer { text-align: center; padding: 20px; color: #5a5080; font-size: 0.85em; border-top: 1px solid #2a2050; }
+.section-title { font-size: 18px; font-weight: 600; color: #1a1a1a; margin-bottom: 16px; padding-bottom: 10px; border-bottom: 2px solid #e8e8e4; }
+.faq-item { margin-bottom: 20px; }
+.faq-q { font-size: 14px; font-weight: 600; color: #1a1a1a; margin-bottom: 6px; }
+.faq-a { font-size: 14px; color: #444; line-height: 1.75; }
+.faq-a a { color: #5c4dff; text-decoration: none; }
+.faq-a a:hover { text-decoration: underline; }
+
+.info-box { background: #eef2ff; border-left: 3px solid #5c4dff; border-radius: 0 6px 6px 0; padding: 12px 16px; margin: 16px 0; font-size: 14px; color: #3d35b5; }
+table { width: 100%; border-collapse: collapse; margin: 12px 0; font-size: 14px; }
+th { background: #f5f5f0; padding: 8px 14px; text-align: left; font-weight: 600; color: #444; border: 1px solid #e8e8e4; }
+td { padding: 8px 14px; border: 1px solid #e8e8e4; color: #444; }
+
+footer { margin-left: 260px; background: #fff; border-top: 1px solid #e8e8e4; padding: 16px 32px; font-size: 13px; color: #999; text-align: center; }
+
+@media (max-width: 768px) {
+  .sidebar { display: none; }
+  .main { margin-left: 0; }
+  footer { margin-left: 0; }
+  .content { padding: 24px 20px; }
+}
 </style>
 </head>
 <body>
-<header>
-  <h1>⚔️ Ragnarok: Sharing Hero</h1>
-  <p>Câu Hỏi Thường Gặp (FAQ)</p>
-</header>
-<nav>
-  <a href="../en/index.html">🇺🇸 EN</a>
-  <a href="../zh/index.html">🇨🇳 ZH</a>
-  <a href="../zh-tw/index.html">🇹🇼 ZH-TW</a>
-  <a href="../th/index.html">🇹🇭 TH</a>
-  <a href="../id/index.html">🇮🇩 ID</a>
-  <a href="../tl/index.html">🇵🇭 TL</a>
-  <a href="../pt-br/index.html">🇧🇷 PT-BR</a>
-  <a href="../vi/index.html">🇻🇳 VI</a>
-  <a href="../ru/index.html">🇷🇺 RU</a>
-</nav>
-<div class="container">
-<div class="section">
+<div class="layout">
+  <aside class="sidebar">
+    <div class="sidebar-logo">
+      <div class="icon">R</div>
+      <span>Ragnarok FAQ</span>
+    </div>
+    <div class="search-box">🔍 Tìm kiếm...</div>
+    <div class="sidebar-section">Ngôn ngữ</div>
+    <a href="../en/index.html" class="sidebar-item">🇺🇸 English</a>
+    <a href="../zh/index.html" class="sidebar-item">🇨🇳 中文简体</a>
+    <a href="../zh-tw/index.html" class="sidebar-item">🇹🇼 中文繁體</a>
+    <a href="../th/index.html" class="sidebar-item">🇹🇭 ภาษาไทย</a>
+    <a href="../id/index.html" class="sidebar-item">🇮🇩 Bahasa Indonesia</a>
+    <a href="../tl/index.html" class="sidebar-item">🇵🇭 Filipino</a>
+    <a href="../pt-br/index.html" class="sidebar-item">🇧🇷 Português</a>
+    <a href="../vi/index.html" class="sidebar-item active">🇻🇳 Tiếng Việt</a>
+    <a href="../ru/index.html" class="sidebar-item">🇷🇺 Русский</a>
+    <hr class="sidebar-divider">
+    <div class="sidebar-section">Trên trang này</div>
+    <a href="#basic" class="sidebar-item">🎮 Thông Tin Cơ Bản</a>
+<a href="#gameplay" class="sidebar-item">⚔️ Cách Chơi</a>
+<a href="#blockchain" class="sidebar-item">🔗 Blockchain / NFT</a>
+<a href="#rewards" class="sidebar-item">🏆 Hệ Thống Phần Thưởng</a>
+<a href="#community" class="sidebar-item">👥 Cộng Đồng</a>
+
+  </aside>
+  <div class="main">
+    <div class="topbar">
+      <div class="breadcrumb">Home / <span>FAQ</span></div>
+      <div class="last-updated">Cập nhật lần cuối: Mar 26, 2026</div>
+    </div>
+    <div class="content">
+      <h1 class="page-title">Ragnarok: Sharing Hero — Câu Hỏi Thường Gặp</h1>
+      <p class="page-desc">Các câu hỏi thường gặp về game, blockchain và phần thưởng.</p>
+      <div class="section" id="basic">
 <div class="section-title">🎮 Thông Tin Cơ Bản Về Game</div>
-<div class="faq-item">
-<div class="faq-q">Q. Đây là game gì?</div>
-<div class="faq-a">Ragnarok: Sharing Hero là một game RPG blockchain dựa trên IP Ragnarok nổi tiếng. Đây là game chiến tranh phe phái quy mô lớn trong đó phe Cosmos và phe Chaos tranh giành quyền kiểm soát Midgard theo thời gian thực. Được phát triển bởi Funigloo, một studio game toàn cầu với 17 năm kinh nghiệm (nhà sản xuất Dragonica Mobile, Seal Mobile và LaTale W).</div>
+<div class="faq-item"><div class="faq-q">Đây là game gì?</div><div class="faq-a">Ragnarok: Sharing Hero là game RPG blockchain dựa trên IP Ragnarok nổi tiếng. Game chiến tranh phe phái quy mô lớn trong đó Cosmos và Chaos tranh giành Midgard theo thời gian thực. Phát triển bởi Funigloo với 17 năm kinh nghiệm.</div></div>
+<div class="faq-item"><div class="faq-q">Game được phát hành khi nào?</div><div class="faq-a">Chính thức ra mắt vào ngày 26 tháng 3 năm 2026.</div></div>
+<div class="faq-item"><div class="faq-q">Tải ở đâu?</div><div class="faq-a">Miễn phí trên Google Play Store và Apple App Store. Tìm kiếm "Ragnarok Sharing Hero".</div></div>
+<div class="faq-item"><div class="faq-q">Game miễn phí hay trả phí?</div><div class="faq-a">Tải xuống và chơi cơ bản miễn phí. Mua vật phẩm và giao dịch NFT có thể phát sinh chi phí.</div></div>
 </div>
-<div class="faq-item">
-<div class="faq-q">Q. Game được phát hành khi nào?</div>
-<div class="faq-a">Chính thức ra mắt vào ngày 26 tháng 3 năm 2026.</div>
-</div>
-<div class="faq-item">
-<div class="faq-q">Q. Tải ở đâu?</div>
-<div class="faq-a">Có sẵn miễn phí trên Google Play Store và Apple App Store.<br>- Google Play: Tìm kiếm "Ragnarok Sharing Hero"<br>- App Store: Tìm kiếm "Ragnarok Sharing Hero"</div>
-</div>
-<div class="faq-item">
-<div class="faq-q">Q. Game miễn phí hay trả phí?</div>
-<div class="faq-a">Tải xuống và chơi cơ bản là miễn phí. Mua vật phẩm trong game và giao dịch NFT có thể phát sinh chi phí thêm.</div>
-</div>
-</div>
-<div class="section">
+<div class="section" id="gameplay">
 <div class="section-title">⚔️ Cách Chơi</div>
-<div class="faq-item">
-<div class="faq-q">Q. Chơi như thế nào?</div>
-<div class="faq-a">Phát triển Knight của bạn, tăng cường trang bị, săn boss và chiến đấu với người chơi khác theo thời gian thực trên chiến trường Middle Land.<br>- Phát triển nhân vật qua hệ thống Crafting, Evolution và Enhancement<br>- Mượn nhân vật của người chơi khác để tham gia Demon Lord Raid<br>- Nội dung đa dạng gồm Raid, Kingdom Quest, World Boss và PvP</div>
+<div class="faq-item"><div class="faq-q">Chơi như thế nào?</div><div class="faq-a">Phát triển Knight, tăng cường trang bị, săn boss và chiến đấu theo thời gian thực trên chiến trường Middle Land.</div></div>
+<div class="faq-item"><div class="faq-q">PvP là gì?</div><div class="faq-a">Người chơi trực tiếp chiến đấu với nhau. Phe chiếm giữ Middle Land cung cấp buff x2 phần thưởng thu thập cho tất cả thành viên.</div></div>
+<div class="faq-item"><div class="faq-q">Hệ thống Sharing là gì?</div><div class="faq-a">Mượn nhân vật bạn bè đưa vào Knight Order để chơi nội dung cùng nhau. Người cho mượn nhận phần thưởng chia sẻ.</div></div>
 </div>
-<div class="faq-item">
-<div class="faq-q">Q. PvP là gì?</div>
-<div class="faq-a">PvP (Player vs Player) là nội dung người chơi trực tiếp chiến đấu với nhau. Phe Valhalla và phe Helheim đối đầu theo thời gian thực trên chiến trường Middle Land. Kết quả chiến đấu quyết định quyền kiểm soát lãnh thổ và phần thưởng cho mỗi phe. Phe chiếm giữ Middle Land sẽ cung cấp buff x2 phần thưởng thu thập và buff tăng chỉ số cho tất cả thành viên.</div>
-</div>
-<div class="faq-item">
-<div class="faq-q">Q. Cosmos và Chaos là gì?</div>
-<div class="faq-a">Hai phe trong game. Mọi người chơi đều thuộc Cosmos (trật tự) hoặc Chaos. Cả hai phe tranh giành quyền kiểm soát Midgard theo thời gian thực. Nếu một phe trở nên quá mạnh, hệ thống sẽ tự động kích hoạt giới hạn tạo nhân vật để khôi phục cân bằng.</div>
-</div>
-<div class="faq-item">
-<div class="faq-q">Q. Làm thế nào để có Hero?</div>
-<div class="faq-a">Bạn có thể phát triển Knight trực tiếp trong game, hoặc mượn hero của người chơi khác qua hệ thống Character Sharing. Người chơi mượn hero mạnh có thể dễ dàng tiến qua Demon Lord Raid, Kingdom Quest và nội dung buff Knight Order hơn.</div>
-</div>
-<div class="faq-item">
-<div class="faq-q">Q. Demon Lord Raid là gì?</div>
-<div class="faq-a">Kẻ thù chính trong game mà người chơi phải cùng nhau đánh bại. Bằng cách săn Demon Lord ở từng cấp độ và boss cuối Woodunkeu, bạn có thể nhận được "Mint Power".</div>
-</div>
-<div class="faq-item">
-<div class="faq-q">Q. Hệ thống Ranking là gì?</div>
-<div class="faq-a">Người chơi có thể tham gia chiến lược hơn 10 loại ranking để nhận phần thưởng. Bao gồm Mint Grand Prix hàng tuần (NFT, MVP Kill, Share Ranking) dựa trên phần thưởng Mint Power, cùng các hệ thống phần thưởng PvP, World Boss, Season và Class ranking.</div>
-</div>
-<div class="faq-item">
-<div class="faq-q">Q. Hệ thống Sharing là gì?</div>
-<div class="faq-a">Mượn nhân vật của bạn bè và đưa vào Knight Order của bạn để chơi nội dung cùng nhau. Điều này cho phép bạn thách thức nội dung khó hơn, và người bạn cho mượn nhân vật sẽ nhận phần thưởng chia sẻ.</div>
-</div>
-</div>
-<div class="section">
+<div class="section" id="blockchain">
 <div class="section-title">🔗 Blockchain / NFT</div>
-<div class="faq-item">
-<div class="faq-q">Q. Immutable là gì?</div>
-<div class="faq-a">Immutable là nền tảng game blockchain chuyên biệt. Đây là công ty toàn cầu có trụ sở tại Úc, thành lập năm 2018, cho phép người chơi thực sự sở hữu vật phẩm trong game dưới dạng tài sản kỹ thuật số (NFT).<br>- Immutable Network: Mạng blockchain cho tài sản game<br>- Immutable Passport: Giải pháp đăng nhập game và ví tích hợp (hơn 6 triệu người đăng ký)<br>- Immutable Play: Nền tảng quest, phần thưởng và bảng xếp hạng</div>
+<div class="faq-item"><div class="faq-q">Immutable là gì?</div><div class="faq-a">Nền tảng game blockchain chuyên biệt. Công ty toàn cầu có trụ sở tại Úc, thành lập 2018.<br>— Immutable Network: Mạng blockchain cho tài sản game<br>— Immutable Passport: Đăng nhập & ví tích hợp (6 triệu+ người đăng ký)<br>— Immutable Play: Nền tảng quest, phần thưởng và bảng xếp hạng</div></div>
+<div class="faq-item"><div class="faq-q">Mua vật phẩm NFT ở đâu?</div><div class="faq-a">Tại marketplace <a href="https://tokentrove.com/collection/RagnarokSharingHero" target="_blank">TokenTrove</a>.</div></div>
+<div class="faq-item"><div class="faq-q">Làm thế nào để nhận $MINT?</div><div class="faq-a">$MINT kiếm qua hoạt động trong game, không mua trực tiếp.<div class="info-box">Tổng Reward Pool: $70,000 — $10K Launch Airdrop + $60K Weekly</div></div></div>
 </div>
-<div class="faq-item">
-<div class="faq-q">Q. Có vật phẩm NFT không?</div>
-<div class="faq-a">Có. Bạn có thể đúc (minting) trang bị trong game thành NFT. Trang bị NFT là "Cúp Kỹ Thuật Số" ghi lại vĩnh viễn thành tích và hành trình của người chơi. Vật phẩm hiếm có thể trưng bày trong NFT Gallery để cung cấp buff cho người chơi khác.</div>
-</div>
-<div class="faq-item">
-<div class="faq-q">Q. Mua vật phẩm NFT ở đâu?</div>
-<div class="faq-a">Trang bị NFT của Ragnarok: Sharing Hero có thể mua tại marketplace TokenTrove. Người chơi có thể tự do mua bán trang bị NFT thu được hoặc chế tạo trong game.<br>Link: <a href="https://tokentrove.com/collection/RagnarokSharingHero" target="_blank">tokentrove.com/collection/RagnarokSharingHero</a></div>
-</div>
-<div class="faq-item">
-<div class="faq-q">Q. Làm thế nào để mua Mint Token để nâng cấp trang bị?</div>
-<div class="faq-a">Token $MINT không mua trực tiếp mà kiếm được qua hoạt động trong game.<br>- <strong>Raid:</strong> Săn boss Woodunkeu để nhận "Mint Power"<br>- <strong>Character/Equipment Sharing (Share & Knights):</strong> Nhận phần thưởng $MINT bằng cách cho mượn<br>- Nhận airdrop $MINT bằng cách hoàn thành Immutable Play Quest<br><br>Hiện đang vận hành tổng Reward Pool $70,000 ($10K Launch Airdrop + $60K Weekly Reward Pool)</div>
-</div>
-<div class="faq-item">
-<div class="faq-q">Q. Có thể kiếm coin/token không?</div>
-<div class="faq-a">Có. Bạn có thể kiếm token $MINT qua các hoạt động trong game như chia sẻ nhân vật, săn boss và tham gia sự kiện.</div>
-</div>
-<div class="faq-item">
-<div class="faq-q">Q. Có cần kết nối ví không?</div>
-<div class="faq-a">Đăng nhập vào Immutable Passport bằng Google/Apple/Facebook sẽ tự động tạo ví. Nếu chỉ muốn chơi bình thường, bạn có thể thưởng thức game mà không cần ví riêng.</div>
-</div>
-</div>
-<div class="section">
+<div class="section" id="rewards">
 <div class="section-title">🏆 Hệ Thống Phần Thưởng</div>
-<div class="faq-item">
-<div class="faq-q">Q. Immutable Play Reward Event là gì?</div>
-<div class="faq-a">Immutable Play là nền tảng phần thưởng liên kết với Ragnarok: Sharing Hero. Bất kỳ ai cũng có thể tham gia bằng cách đăng nhập bằng tài khoản Immutable Passport.<br><table><tr><th>Sự kiện</th><th>Nội dung</th></tr><tr><td>Quest</td><td>Nhận phần thưởng khi hoàn thành nhiệm vụ trong game</td></tr><tr><td>NFT Airdrop</td><td>NFT miễn phí phân phát cho người tham gia được chọn</td></tr><tr><td>Leaderboard</td><td>Cạnh tranh 36 ranking, người chơi hàng đầu nhận giải thưởng</td></tr><tr><td>Figure giới hạn</td><td>Sự kiện tặng figure sưu tầm Ragnarok IP</td></tr><tr><td>NFT Gallery</td><td>Trưng bày NFT → cung cấp buff cho đồng minh qua like/ranking</td></tr></table></div>
+<div class="faq-item"><div class="faq-q">Immutable Play Reward Event là gì?</div><div class="faq-a">Nền tảng phần thưởng liên kết với Ragnarok. Đăng nhập bằng Immutable Passport để tham gia.<table><tr><th>Sự kiện</th><th>Nội dung</th></tr><tr><td>Quest</td><td>Nhận phần thưởng khi hoàn thành nhiệm vụ</td></tr><tr><td>NFT Airdrop</td><td>NFT miễn phí cho người tham gia được chọn</td></tr><tr><td>Leaderboard</td><td>Cạnh tranh 36 ranking, người đứng đầu nhận giải</td></tr></table></div></div>
+<div class="faq-item"><div class="faq-q">Làm thế nào để nhận Gem?</div><div class="faq-a">Hoàn thành quest trong game Ragnarok trên Immutable Play. Dùng Gem tham gia Weekly Reward tổng $60,000 mỗi tuần.</div></div>
 </div>
-<div class="faq-item">
-<div class="faq-q">Q. Phần thưởng quest là gì?</div>
-<div class="faq-a">Hoàn thành quest trên Immutable Play nhận được:<br>- Airdrop token $MINT theo ranking<br>- Phân phát vật phẩm NFT<br>- Cơ hội thắng figure Ragnarok phiên bản giới hạn<br>- Limited Costume NFT trong game<br>- Coupon lớn trong game</div>
-</div>
-<div class="faq-item">
-<div class="faq-q">Q. Làm thế nào để nhận Gem?</div>
-<div class="faq-a">Gem được trao khi hoàn thành quest trong game Ragnarok trên Immutable Play. Dùng Gem kiếm được để tham gia Weekly Reward với tổng giải thưởng $60,000 được tổ chức mỗi tuần trên Immutable Play.</div>
-</div>
-<div class="faq-item">
-<div class="faq-q">Q. Lợi ích của việc Follow là gì?</div>
-<div class="faq-a">Follow trang "Ragnarok: Sharing Hero" trên Immutable Play. Đã có hơn 110,000 người chơi tham gia. Follow cho phép truy cập các cập nhật mới nhất và các lợi ích sau: mở quest mới, đủ điều kiện tham gia sự kiện phần thưởng, v.v.<br><br>Cách tham gia:<br>1. Truy cập play.immutable.com<br>2. Đăng nhập bằng Immutable Passport<br>3. Follow trang Ragnarok: Sharing Hero<br>4. Hoàn thành quest và nhận phần thưởng</div>
-</div>
-</div>
-<div class="section">
+<div class="section" id="community">
 <div class="section-title">👥 Cộng Đồng</div>
-<div class="faq-item">
-<div class="faq-q">Q. Mạng xã hội chính thức ở đâu?</div>
-<div class="faq-a">- X (Twitter): <a href="https://twitter.com/Mintory_LABS" target="_blank">@Mintory_LABS</a><br>- YouTube: <a href="https://youtube.com/@Funigloo" target="_blank">@Funigloo</a><br>- Discord: <a href="https://discord.com/invite/j5vwjVK3jC" target="_blank">discord.com/invite/j5vwjVK3jC</a><br>- Immutable Play: <a href="https://play.immutable.com/games/ragnaroksharinghero" target="_blank">play.immutable.com/games/ragnaroksharinghero</a></div>
-</div>
-<div class="faq-item">
-<div class="faq-q">Q. Có cộng đồng chính thức không?</div>
-<div class="faq-a">Có. Cộng đồng chính thức hoạt động sôi nổi trên Discord và X (Twitter). Trên Discord có cập nhật game, thông tin sự kiện và giao lưu tích cực giữa người chơi.</div>
-</div>
+<div class="faq-item"><div class="faq-q">Mạng xã hội chính thức ở đâu?</div><div class="faq-a">— X (Twitter): <a href="https://twitter.com/Mintory_LABS" target="_blank">@Mintory_LABS</a><br>— YouTube: <a href="https://youtube.com/@Funigloo" target="_blank">@Funigloo</a><br>— Discord: <a href="https://discord.com/invite/j5vwjVK3jC" target="_blank">discord.com/invite/j5vwjVK3jC</a></div></div>
 </div>
 
+    </div>
+  </div>
 </div>
-<footer>© 2026 Ragnarok: Sharing Hero — Funigloo | <a href="https://play.immutable.com/games/ragnaroksharinghero" target="_blank">Immutable Play</a></footer>
-<script>
-document.querySelectorAll('.faq-q').forEach(q => {
-  q.addEventListener('click', () => {
-    q.parentElement.classList.toggle('open');
-  });
-});
-</script>
+<footer>© 2026 Ragnarok: Sharing Hero — Funigloo | <a href="https://play.immutable.com/games/ragnaroksharinghero" target="_blank" style="color:#5c4dff;">Immutable Play</a></footer>
 </body>
 </html>

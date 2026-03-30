@@ -6,97 +6,123 @@
 <title>Ragnarok: Sharing Hero — 常見問題 (FAQ)</title>
 <style>
 * { box-sizing: border-box; margin: 0; padding: 0; }
-body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background: #0a0a1a; color: #e0e0f0; line-height: 1.7; }
-header { background: linear-gradient(135deg, #1a0a2e, #2d1b69); padding: 24px 20px; text-align: center; border-bottom: 2px solid #4a2f9a; }
-header h1 { font-size: 1.8em; color: #c8a8ff; letter-spacing: 1px; }
-header p { color: #9a8abf; margin-top: 6px; font-size: 0.95em; }
-nav { background: #12102a; padding: 12px 20px; display: flex; gap: 8px; flex-wrap: wrap; justify-content: center; border-bottom: 1px solid #2a2050; }
-nav a { color: #9a8abf; text-decoration: none; padding: 4px 10px; border-radius: 4px; font-size: 0.85em; transition: all 0.2s; }
-nav a:hover, nav a.active { background: #4a2f9a; color: #fff; }
-.container { max-width: 860px; margin: 0 auto; padding: 30px 20px; }
+body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif; background: #f5f5f0; color: #1a1a1a; line-height: 1.7; display: flex; flex-direction: column; min-height: 100vh; }
+.layout { display: flex; flex: 1; min-height: 100vh; }
+
+/* 사이드바 */
+.sidebar { width: 260px; min-width: 260px; background: #fff; border-right: 1px solid #e8e8e4; display: flex; flex-direction: column; position: fixed; top: 0; left: 0; height: 100vh; overflow-y: auto; z-index: 10; }
+.sidebar-logo { padding: 16px; border-bottom: 1px solid #e8e8e4; display: flex; align-items: center; gap: 10px; }
+.sidebar-logo .icon { width: 30px; height: 30px; background: #5c4dff; border-radius: 6px; display: flex; align-items: center; justify-content: center; color: white; font-weight: 600; font-size: 15px; flex-shrink: 0; }
+.sidebar-logo span { font-size: 14px; font-weight: 600; color: #1a1a1a; }
+.search-box { margin: 12px; padding: 7px 12px; background: #f5f5f0; border: 1px solid #e8e8e4; border-radius: 6px; font-size: 13px; color: #999; display: flex; align-items: center; gap: 8px; cursor: pointer; }
+.sidebar-section { padding: 8px 12px 4px; font-size: 11px; font-weight: 600; color: #999; letter-spacing: 0.06em; text-transform: uppercase; }
+.sidebar-item { padding: 6px 12px; margin: 1px 4px; border-radius: 6px; font-size: 13px; color: #555; cursor: pointer; display: flex; align-items: center; gap: 8px; text-decoration: none; }
+.sidebar-item:hover { background: #f0f0ec; color: #1a1a1a; }
+.sidebar-item.active { background: #5c4dff15; color: #5c4dff; font-weight: 500; }
+.sidebar-divider { margin: 8px 12px; border: none; border-top: 1px solid #e8e8e4; }
+
+/* 메인 */
+.main { margin-left: 260px; flex: 1; display: flex; flex-direction: column; }
+.topbar { background: #fff; border-bottom: 1px solid #e8e8e4; padding: 10px 32px; display: flex; align-items: center; justify-content: space-between; position: sticky; top: 0; z-index: 5; }
+.breadcrumb { font-size: 13px; color: #999; display: flex; align-items: center; gap: 6px; }
+.breadcrumb span { color: #1a1a1a; }
+.last-updated { font-size: 12px; color: #999; background: #f5f5f0; padding: 3px 10px; border-radius: 999px; border: 1px solid #e8e8e4; }
+
+.content { padding: 40px 48px; max-width: 800px; }
+.page-title { font-size: 28px; font-weight: 600; color: #1a1a1a; margin-bottom: 8px; }
+.page-desc { font-size: 15px; color: #666; margin-bottom: 36px; }
+
 .section { margin-bottom: 40px; }
-.section-title { font-size: 1.2em; color: #c8a8ff; border-left: 4px solid #7c4dff; padding-left: 12px; margin-bottom: 20px; }
-.faq-item { background: #12102a; border: 1px solid #2a2050; border-radius: 8px; margin-bottom: 12px; overflow: hidden; }
-.faq-q { padding: 14px 18px; cursor: pointer; font-weight: 600; color: #d0c0ff; display: flex; justify-content: space-between; align-items: center; }
-.faq-q:hover { background: #1e1a40; }
-.faq-q::after { content: '▼'; font-size: 0.75em; color: #7c4dff; transition: transform 0.2s; }
-.faq-item.open .faq-q::after { transform: rotate(180deg); }
-.faq-a { display: none; padding: 14px 18px; color: #b0a8d0; border-top: 1px solid #2a2050; }
-.faq-item.open .faq-a { display: block; }
-table { width: 100%; border-collapse: collapse; margin: 10px 0; }
-th { background: #2a2050; color: #c8a8ff; padding: 8px 12px; text-align: left; }
-td { padding: 8px 12px; border-bottom: 1px solid #1e1a40; }
-a { color: #9a78ff; }
-footer { text-align: center; padding: 20px; color: #5a5080; font-size: 0.85em; border-top: 1px solid #2a2050; }
+.section-title { font-size: 18px; font-weight: 600; color: #1a1a1a; margin-bottom: 16px; padding-bottom: 10px; border-bottom: 2px solid #e8e8e4; }
+.faq-item { margin-bottom: 20px; }
+.faq-q { font-size: 14px; font-weight: 600; color: #1a1a1a; margin-bottom: 6px; }
+.faq-a { font-size: 14px; color: #444; line-height: 1.75; }
+.faq-a a { color: #5c4dff; text-decoration: none; }
+.faq-a a:hover { text-decoration: underline; }
+
+.info-box { background: #eef2ff; border-left: 3px solid #5c4dff; border-radius: 0 6px 6px 0; padding: 12px 16px; margin: 16px 0; font-size: 14px; color: #3d35b5; }
+table { width: 100%; border-collapse: collapse; margin: 12px 0; font-size: 14px; }
+th { background: #f5f5f0; padding: 8px 14px; text-align: left; font-weight: 600; color: #444; border: 1px solid #e8e8e4; }
+td { padding: 8px 14px; border: 1px solid #e8e8e4; color: #444; }
+
+footer { margin-left: 260px; background: #fff; border-top: 1px solid #e8e8e4; padding: 16px 32px; font-size: 13px; color: #999; text-align: center; }
+
+@media (max-width: 768px) {
+  .sidebar { display: none; }
+  .main { margin-left: 0; }
+  footer { margin-left: 0; }
+  .content { padding: 24px 20px; }
+}
 </style>
 </head>
 <body>
-<header>
-  <h1>⚔️ Ragnarok: Sharing Hero</h1>
-  <p>常見問題 (FAQ)</p>
-</header>
-<nav>
-  <a href="../en/index.html">🇺🇸 EN</a>
-  <a href="../zh/index.html">🇨🇳 ZH</a>
-  <a href="../zh-tw/index.html" class="active">🇹🇼 ZH-TW</a>
-  <a href="../th/index.html">🇹🇭 TH</a>
-  <a href="../id/index.html">🇮🇩 ID</a>
-  <a href="../tl/index.html">🇵🇭 TL</a>
-  <a href="../pt-br/index.html">🇧🇷 PT-BR</a>
-  <a href="../vi/index.html">🇻🇳 VI</a>
-  <a href="../ru/index.html">🇷🇺 RU</a>
-</nav>
-<div class="container">
+<div class="layout">
+  <aside class="sidebar">
+    <div class="sidebar-logo">
+      <div class="icon">R</div>
+      <span>Ragnarok FAQ</span>
+    </div>
+    <div class="search-box">🔍 搜尋...</div>
+    <div class="sidebar-section">語言</div>
+    <a href="../en/index.html" class="sidebar-item">🇺🇸 English</a>
+    <a href="../zh/index.html" class="sidebar-item">🇨🇳 中文简体</a>
+    <a href="../zh-tw/index.html" class="sidebar-item active">🇹🇼 中文繁體</a>
+    <a href="../th/index.html" class="sidebar-item">🇹🇭 ภาษาไทย</a>
+    <a href="../id/index.html" class="sidebar-item">🇮🇩 Bahasa Indonesia</a>
+    <a href="../tl/index.html" class="sidebar-item">🇵🇭 Filipino</a>
+    <a href="../pt-br/index.html" class="sidebar-item">🇧🇷 Português</a>
+    <a href="../vi/index.html" class="sidebar-item">🇻🇳 Tiếng Việt</a>
+    <a href="../ru/index.html" class="sidebar-item">🇷🇺 Русский</a>
+    <hr class="sidebar-divider">
+    <div class="sidebar-section">本頁內容</div>
+    <a href="#basic" class="sidebar-item">🎮 遊戲基本資訊</a>
+<a href="#gameplay" class="sidebar-item">⚔️ 遊戲玩法</a>
+<a href="#blockchain" class="sidebar-item">🔗 區塊鏈 / NFT</a>
+<a href="#rewards" class="sidebar-item">🏆 獎勵系統</a>
+<a href="#community" class="sidebar-item">👥 社群</a>
 
-  <div class="section">
-    <div class="section-title">🎮 遊戲基本資訊</div>
-    <div class="faq-item"><div class="faq-q">Q. 這是什麼遊戲？</div><div class="faq-a">Ragnarok: Sharing Hero是一款基於知名Ragnarok IP的區塊鏈RPG遊戲。這是一款大規模派系戰爭遊戲，Cosmos陣營和Chaos陣營實時爭奪米德加德的控制權。由擁有17年經驗的全球遊戲工作室Funigloo開發（《Dragonica Mobile》、《Seal Mobile》、《LaTale W》製作團隊）。</div></div>
-    <div class="faq-item"><div class="faq-q">Q. 遊戲何時發布？</div><div class="faq-a">於2026年3月26日正式發布。</div></div>
-    <div class="faq-item"><div class="faq-q">Q. 在哪裡下載？</div><div class="faq-a">可在Google Play商店和Apple App Store免費下載。<br>- Google Play：搜尋「Ragnarok Sharing Hero」<br>- App Store：搜尋「Ragnarok Sharing Hero」</div></div>
-    <div class="faq-item"><div class="faq-q">Q. 遊戲是免費還是付費？</div><div class="faq-a">基礎下載和遊戲是免費的。遊戲內道具購買和NFT交易可能需要額外費用。</div></div>
-  </div>
-
-  <div class="section">
-    <div class="section-title">⚔️ 遊戲玩法</div>
-    <div class="faq-item"><div class="faq-q">Q. 如何遊玩？</div><div class="faq-a">培養騎士（Knight），強化裝備，獵殺Boss，並在Middle Land戰場上與其他玩家實時對戰。<br>- 透過製作（Crafting）、進化（Evolution）、強化（Enhancement）系統成長角色<br>- 借用其他玩家的角色參與魔神討伐<br>- 包含副本、王國委託、世界Boss、對戰等多種內容</div></div>
-    <div class="faq-item"><div class="faq-q">Q. 什麼是PvP？</div><div class="faq-a">PvP（Player vs Player）是玩家之間直接對戰的內容。瓦爾哈拉陣營和海爾海姆陣營在Middle Land戰場上實時交鋒。戰鬥結果決定各陣營的領土控制權和獎勵，占領Middle Land的陣營將為全體派系成員提供2倍採集獎勵加成和屬性提升加成。</div></div>
-    <div class="faq-item"><div class="faq-q">Q. Cosmos和Chaos是什麼？</div><div class="faq-a">遊戲中的兩個陣營。所有玩家都屬於Cosmos（宇宙/秩序）或Chaos（混沌）之一。兩個陣營實時爭奪米德加德的控制權，若某陣營過於強大，系統將自動啟動角色創建限制等平衡機制。</div></div>
-    <div class="faq-item"><div class="faq-q">Q. 如何獲得英雄（Hero）？</div><div class="faq-a">可以在遊戲中直接培養騎士，或透過角色共享（Character Sharing）系統借用其他玩家的英雄。借用強力英雄的玩家可以更輕鬆地進行魔神討伐、王國委託和騎士團增益內容。</div></div>
-    <div class="faq-item"><div class="faq-q">Q. 什麼是魔神討伐？</div><div class="faq-a">遊戲的主要敵人，需要玩家合力擊敗的大型Boss。獵殺各等級魔神和最終Boss Woodunkeu，可獲得「Mint Power」。</div></div>
-    <div class="faq-item"><div class="faq-q">Q. 排名系統是什麼？</div><div class="faq-a">玩家可以戰略性地參與10種以上不同的排名並獲取獎勵。包括每週以Mint Power獎勵為基準運營的Mint大獎賽（NFT、MVP KILL、Share排名），以及PvP、世界Boss、賽季、職業排名等多種獎勵體系。</div></div>
-    <div class="faq-item"><div class="faq-q">Q. 共享系統是什麼？</div><div class="faq-a">可以借用朋友的角色編入自己的騎士團來一起遊玩內容。這樣可以挑戰更高難度，而提供角色的朋友將獲得共享獎勵。</div></div>
-  </div>
-
-  <div class="section">
-    <div class="section-title">🔗 區塊鏈 / NFT</div>
-    <div class="faq-item"><div class="faq-q">Q. 什麼是Immutable？</div><div class="faq-a">Immutable是專業的區塊鏈遊戲平台。這是一家成立於2018年的澳洲全球企業，讓玩家能夠真正擁有遊戲內道具作為數位資產（NFT）。<br>- Immutable Network：遊戲資產區塊鏈網路<br>- Immutable Passport：遊戲登入及錢包整合解決方案（超600萬註冊用戶）<br>- Immutable Play：任務、獎勵和排行榜平台</div></div>
-    <div class="faq-item"><div class="faq-q">Q. 有NFT道具嗎？</div><div class="faq-a">有。可以將遊戲內裝備鑄造（Minting）為NFT。NFT裝備是永久記錄玩家成就和歷程的「數位獎盃」。稀有道具可在NFT畫廊展示，為其他玩家提供增益效果。</div></div>
-    <div class="faq-item"><div class="faq-q">Q. 在哪裡購買NFT道具？</div><div class="faq-a">Ragnarok: Sharing Hero的NFT裝備可在交易平台TokenTrove購買。玩家可自由買賣遊戲內獲得或製作的NFT裝備。<br>連結：<a href="https://tokentrove.com/collection/RagnarokSharingHero" target="_blank">tokentrove.com/collection/RagnarokSharingHero</a></div></div>
-    <div class="faq-item"><div class="faq-q">Q. 如何購買Mint代幣來強化裝備？</div><div class="faq-a">$MINT代幣不直接購買，而是透過遊戲內活動獲得。<br>- <strong>副本：</strong>獵殺Boss Woodunkeu獲得「Mint Power」<br>- <strong>角色/裝備共享（Share & Knights）：</strong>出借角色獲得$MINT獎勵<br>- 完成Immutable Play任務獲得$MINT空投<br><br>目前運營總計$70,000獎勵池（$10K發布空投 + $60K每週獎勵池）</div></div>
-    <div class="faq-item"><div class="faq-q">Q. 可以賺取代幣嗎？</div><div class="faq-a">可以。可以透過角色共享、獵殺Boss、參與活動等遊戲內活動賺取$MINT代幣。</div></div>
-    <div class="faq-item"><div class="faq-q">Q. 需要連接錢包嗎？</div><div class="faq-a">透過Immutable Passport使用Google/Apple/Facebook登入後，錢包將自動創建。如果只想正常遊玩，無需單獨的錢包即可享受遊戲。</div></div>
-  </div>
-
-  <div class="section">
-    <div class="section-title">🏆 獎勵系統</div>
-    <div class="faq-item"><div class="faq-q">Q. 什麼是Immutable Play獎勵活動？</div><div class="faq-a">Immutable Play是與Ragnarok: Sharing Hero聯動的獎勵平台。使用Immutable Passport帳戶登入即可參與。<table><tr><th>活動</th><th>內容</th></tr><tr><td>任務</td><td>完成遊戲內任務獲得獎勵</td></tr><tr><td>NFT空投</td><td>向選定參與者免費發放NFT</td></tr><tr><td>排行榜</td><td>36種排名競爭，頂級玩家獲得獎勵</td></tr><tr><td>限定公仔</td><td>Ragnarok IP聯名實體公仔贈送活動</td></tr><tr><td>NFT畫廊</td><td>展示NFT→透過按讚/排名為隊友提供增益</td></tr></table></div></div>
-    <div class="faq-item"><div class="faq-q">Q. 任務獎勵是什麼？</div><div class="faq-a">在Immutable Play完成任務可獲得：<br>- 按排名分配的$MINT代幣空投<br>- NFT道具發放<br>- 抽取限量版Ragnarok公仔的機會<br>- 遊戲內限定服裝NFT<br>- 遊戲內大額優惠券</div></div>
-    <div class="faq-item"><div class="faq-q">Q. 如何獲得Gem？</div><div class="faq-a">在Immutable Play完成Ragnarok遊戲內任務即可獲得。使用獲得的Gem參與Immutable Play每週舉辦的總額$60,000規模的週獎勵活動。</div></div>
-    <div class="faq-item"><div class="faq-q">Q. 關注有什麼好處？</div><div class="faq-a">關注Immutable Play上的「Ragnarok: Sharing Hero」頁面。已有超過11萬名玩家加入，關注後可獲得最新更新資訊和以下福利：新任務開啟、獎勵活動參與資格等。<br><br>參與方式：<br>1. 前往 play.immutable.com<br>2. 使用Immutable Passport登入<br>3. 在Ragnarok: Sharing Hero頁面點擊關注<br>4. 完成任務後領取獎勵</div></div>
-  </div>
-
-  <div class="section">
-    <div class="section-title">👥 社群</div>
-    <div class="faq-item"><div class="faq-q">Q. 官方社群媒體在哪裡？</div><div class="faq-a">- X（推特）：<a href="https://twitter.com/Mintory_LABS" target="_blank">@Mintory_LABS</a><br>- YouTube：<a href="https://youtube.com/@Funigloo" target="_blank">@Funigloo</a><br>- Discord：<a href="https://discord.com/invite/j5vwjVK3jC" target="_blank">discord.com/invite/j5vwjVK3jC</a><br>- Immutable Play：<a href="https://play.immutable.com/games/ragnaroksharinghero" target="_blank">play.immutable.com/games/ragnaroksharinghero</a></div></div>
-    <div class="faq-item"><div class="faq-q">Q. 有官方社群嗎？</div><div class="faq-a">有。官方社群在Discord和X（推特）上活躍運營。Discord上有遊戲更新、活動資訊和玩家間的互動交流。</div></div>
-  </div>
-
+  </aside>
+  <div class="main">
+    <div class="topbar">
+      <div class="breadcrumb">Home / <span>FAQ</span></div>
+      <div class="last-updated">最後更新: Mar 26, 2026</div>
+    </div>
+    <div class="content">
+      <h1 class="page-title">Ragnarok: Sharing Hero — 常見問題 (FAQ)</h1>
+      <p class="page-desc">關於遊戲、區塊鏈和獎勵的常見問題。</p>
+      <div class="section" id="basic">
+<div class="section-title">🎮 遊戲基本資訊</div>
+<div class="faq-item"><div class="faq-q">這是什麼遊戲？</div><div class="faq-a">Ragnarok: Sharing Hero是一款基於知名Ragnarok IP的區塊鏈RPG遊戲。Cosmos和Chaos陣營實時爭奪米德加德控制權的大規模派系戰爭遊戲。由擁有17年經驗的全球工作室Funigloo開發。</div></div>
+<div class="faq-item"><div class="faq-q">遊戲何時發布？</div><div class="faq-a">於2026年3月26日正式發布。</div></div>
+<div class="faq-item"><div class="faq-q">在哪裡下載？</div><div class="faq-a">可在Google Play商店和Apple App Store免費下載。搜尋「Ragnarok Sharing Hero」。</div></div>
+<div class="faq-item"><div class="faq-q">遊戲是免費還是付費？</div><div class="faq-a">基礎下載和遊戲免費。遊戲內道具購買和NFT交易可能需要額外費用。</div></div>
 </div>
-<footer>© 2026 Ragnarok: Sharing Hero — Funigloo | <a href="https://play.immutable.com/games/ragnaroksharinghero" target="_blank">Immutable Play</a></footer>
-<script>
-document.querySelectorAll('.faq-q').forEach(q => {
-  q.addEventListener('click', () => { q.parentElement.classList.toggle('open'); });
-});
-</script>
+<div class="section" id="gameplay">
+<div class="section-title">⚔️ 遊戲玩法</div>
+<div class="faq-item"><div class="faq-q">如何遊玩？</div><div class="faq-a">培養騎士，強化裝備，獵殺Boss，並在Middle Land戰場上實時對戰。透過製作、進化、強化系統成長角色。</div></div>
+<div class="faq-item"><div class="faq-q">什麼是PvP？</div><div class="faq-a">玩家之間直接對戰。瓦爾哈拉和海爾海姆陣營在Middle Land實時交鋒。占領陣營可為全體成員提供2倍採集獎勵和屬性提升加成。</div></div>
+<div class="faq-item"><div class="faq-q">Cosmos和Chaos是什麼？</div><div class="faq-a">遊戲中的兩個陣營。所有玩家屬於Cosmos（秩序）或Chaos（混沌）之一。若某陣營過於強大，系統將自動啟動角色創建限制以平衡遊戲。</div></div>
+<div class="faq-item"><div class="faq-q">共享系統是什麼？</div><div class="faq-a">借用朋友角色編入自己的騎士團一起挑戰內容。提供角色的朋友將獲得共享獎勵。</div></div>
+</div>
+<div class="section" id="blockchain">
+<div class="section-title">🔗 區塊鏈 / NFT</div>
+<div class="faq-item"><div class="faq-q">什麼是Immutable？</div><div class="faq-a">專業的區塊鏈遊戲平台。成立於2018年的澳洲全球企業，讓玩家真正擁有遊戲內道具作為數位資產（NFT）。<br>— Immutable Network：遊戲資產區塊鏈網路<br>— Immutable Passport：遊戲登入及錢包整合（超600萬用戶）<br>— Immutable Play：任務、獎勵和排行榜平台</div></div>
+<div class="faq-item"><div class="faq-q">在哪裡購買NFT道具？</div><div class="faq-a">在交易平台 <a href="https://tokentrove.com/collection/RagnarokSharingHero" target="_blank">TokenTrove</a> 購買。</div></div>
+<div class="faq-item"><div class="faq-q">如何獲得$MINT代幣？</div><div class="faq-a">$MINT代幣不直接購買，透過遊戲內活動獲得。<div class="info-box">總獎勵池：$70,000 — $10K發布空投 + $60K每週獎勵</div></div></div>
+</div>
+<div class="section" id="rewards">
+<div class="section-title">🏆 獎勵系統</div>
+<div class="faq-item"><div class="faq-q">什麼是Immutable Play獎勵活動？</div><div class="faq-a">與Ragnarok聯動的獎勵平台。使用Immutable Passport帳戶登入即可參與。<table><tr><th>活動</th><th>內容</th></tr><tr><td>任務</td><td>完成遊戲內任務獲得獎勵</td></tr><tr><td>NFT空投</td><td>向選定參與者免費發放NFT</td></tr><tr><td>排行榜</td><td>36種排名競爭，頂級玩家獲獎</td></tr></table></div></div>
+<div class="faq-item"><div class="faq-q">如何獲得Gem？</div><div class="faq-a">在Immutable Play完成Ragnarok遊戲內任務即可獲得。使用Gem參與每週總額$60,000的週獎勵活動。</div></div>
+</div>
+<div class="section" id="community">
+<div class="section-title">👥 社群</div>
+<div class="faq-item"><div class="faq-q">官方社群媒體在哪裡？</div><div class="faq-a">— X（推特）：<a href="https://twitter.com/Mintory_LABS" target="_blank">@Mintory_LABS</a><br>— YouTube：<a href="https://youtube.com/@Funigloo" target="_blank">@Funigloo</a><br>— Discord：<a href="https://discord.com/invite/j5vwjVK3jC" target="_blank">discord.com/invite/j5vwjVK3jC</a></div></div>
+</div>
+
+    </div>
+  </div>
+</div>
+<footer>© 2026 Ragnarok: Sharing Hero — Funigloo | <a href="https://play.immutable.com/games/ragnaroksharinghero" target="_blank" style="color:#5c4dff;">Immutable Play</a></footer>
 </body>
 </html>

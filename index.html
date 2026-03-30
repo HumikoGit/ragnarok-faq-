@@ -6,25 +6,16 @@
 <script>
 const lang = navigator.language.toLowerCase();
 const map = {
-  'en': 'en',
-  'zh-tw': 'zh-tw', 'zh-hant': 'zh-tw', 'zh-hk': 'zh-tw',
-  'zh': 'zh',
-  'th': 'th',
-  'id': 'id',
+  'en': 'en', 'zh-tw': 'zh-tw', 'zh-hant': 'zh-tw', 'zh-hk': 'zh-tw',
+  'zh': 'zh', 'th': 'th', 'id': 'id',
   'tl': 'tl', 'fil': 'tl',
   'pt-br': 'pt-br', 'pt': 'pt-br',
-  'vi': 'vi',
-  'ru': 'ru'
+  'vi': 'vi', 'ru': 'ru'
 };
 const matched = Object.keys(map).find(k => lang.startsWith(k));
-const target = matched ? map[matched] : 'en';
-window.location.replace(target + '/index.html');
+window.location.replace((matched ? map[matched] : 'en') + '/index.html');
 </script>
-<noscript>
-  <meta http-equiv="refresh" content="0;url=en/index.html">
-</noscript>
+<noscript><meta http-equiv="refresh" content="0;url=en/index.html"></noscript>
 </head>
-<body>
-<p>Redirecting... / 리다이렉트 중...</p>
-</body>
+<body><p>Redirecting...</p></body>
 </html>
